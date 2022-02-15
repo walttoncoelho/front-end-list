@@ -3,7 +3,8 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --webpack-dev-server --progress --colors --inline -- hot --config webpack.config.js",
+    "poduction": "webpack --progress -p",
     "build": "vite build",
     "preview": "vite preview"
   },
