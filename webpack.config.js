@@ -2,13 +2,13 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-    entry: './src/index.jsx',
+    entry: './src/main.jsx',
     output: {
         path: __dirname + '/public',
-        filename: './app.js'
+        filename: './main.jsx'
     },
     devServer: {
-        port:8080,
+        port:3000,
         contentBase:'./public',
     },
     resolve: {
