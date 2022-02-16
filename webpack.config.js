@@ -5,7 +5,7 @@ module.exports = {
     entry: './src/main.jsx',
     output: {
         path: __dirname + '/public',
-        filename: './main.jsx'
+        filename: './App.jsx'
     },
     devServer: {
         port:3000,
@@ -19,7 +19,7 @@ module.exports = {
     },
 
     plugins: [
-        new ExtractTextPlugin('app.css')
+        new ExtractTextPlugin('App.css')
     ],
     module: {
         loaders: [{
@@ -28,7 +28,7 @@ module.exports = {
             exclude: /node_modules/,
             query: {
                 presets: ['es2015', 'react'],
-                plugins: ['transform-object-rest-spred']
+                plugins: ['transform-object-rest-spread']
             }
             
         },{
