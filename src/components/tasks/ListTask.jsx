@@ -7,7 +7,8 @@ export default props => {
       <tr key={todo._id}>
         <td>{todo.description}</td> 
         <td>
-        <button 
+        <button
+        className='delete'
         onClick={() => props.handleRemove(todo)}>          
           Delete
         </button>
@@ -24,8 +25,8 @@ export default props => {
     <table>
       <thead>
         <tr>
-          <th>Description</th>
-          <th>Action</th>
+          <th>Descrição</th>
+          <th>Ação</th>
         </tr>
       </thead>
       <tbody>
