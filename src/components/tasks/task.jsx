@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import Formtask from './Formtask'
 import ListTask from './ListTask'
 
+import axios from 'axios'
+
+const URL = 'http://localhost:3001/api/todos'
 export default class Task extends Component {
   constructor(props) {
     super(props)
@@ -13,6 +16,13 @@ export default class Task extends Component {
     this.handleAdd = this.handleAdd.bind(this)
     this.handleChange = this.handleChange.bind(this)
 
+    this.refresh()
+
+  }
+
+  refresh() {
+    axios.get(`${URL}?sort=-createdAt`)
+      .then(resp => this.setState({ ...this.state, description: '', list: resp.data }))
   }
 
   handleChange(e) {
@@ -20,14 +30,10 @@ export default class Task extends Component {
   }
 
   handleAdd() {
-    this.setState({
-      ...this.state,
-      description: '',
-      list: [
-        ...this.state.list,
-        this.state.description
-      ]
-    })
+    const description = this.state.description
+    axios.post(URL, { description })
+      .then(resp => this.refresh());
+
   }
 
   render() {
@@ -38,7 +44,7 @@ export default class Task extends Component {
       handleChange={this.handleChange}
       handleAdd={this.handleAdd}      
       />
-      <ListTask />
+      <ListTask list={this.state.list}/>
     </div>
   )
 }
